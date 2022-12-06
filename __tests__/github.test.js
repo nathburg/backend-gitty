@@ -32,4 +32,12 @@ describe('github auth', () => {
       exp: expect.any(Number),
     });
   });
+  test('DELETE /api/v1/github signs out logged in user', async () => {
+    await request.agent(app).get('/api/v1/github/callback?code=42');
+    const res = await request.agent(app).delete('/api/v1/github');
+    // expect(res.status).toBe(204);
+    expect(res.body.message).toEqual('You logged out successfully!');
+    const res2 = await request.agent(app).get('/api/v1/github/dashboard');
+    expect(res2.status).toBe(401);
+  });
 });

@@ -22,7 +22,7 @@ CREATE TABLE posts (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   username TEXT NOT NULL,
   title TEXT NOT NULL,
-  description TEXT NOT NULL
+  description VARCHAR (255) NOT NULL
 );
 
 INSERT INTO posts (username, title, description) 
