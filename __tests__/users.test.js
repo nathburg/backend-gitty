@@ -39,7 +39,7 @@ describe('user routes', () => {
   it('creates a new user', async () => {
     const res = await request(app).post('/api/v1/users').send(mockUser);
     const { firstName, lastName, email } = mockUser;
-
+    console.log('res.body ', res.body);
     expect(res.body).toEqual({
       id: expect.any(String),
       firstName,
